@@ -6,7 +6,6 @@ import java.util.Arrays;
 
 /* 
 Task about algorithms
-
 */
 
 public class Solution {
@@ -17,6 +16,7 @@ public class Solution {
             array[i] = reader.readLine();
         }
 
+
         sort(array);
 
         for (String x : array) {
@@ -25,19 +25,20 @@ public class Solution {
     }
 
     public static void sort(String[] array) {
-        String[] arrRes = new String[array.length];
+        String temp;
 
-        for (int i = 1; i < array.length; i++) {
-
-            boolean greaterThan = isGreaterThan(array[i], array[i - 1]);
-
-            if (greaterThan) {
-                arrRes[i] = array[i];
+        for (int j = 0; j < array.length; j++) {
+            for (int i = 0; i < array.length - 1; i++) {
+                boolean x = isGreaterThan(array[i], array[i + 1]);
+                if (x) {
+                    temp = array[i + 1];
+                    array[i + 1] = array[i];
+                    array[i] = temp;
+                }
             }
         }
     }
 
-    // String comparison method: 'a' is greater than 'b'
     public static boolean isGreaterThan(String a, String b) {
         return a.compareTo(b) > 0;
     }
